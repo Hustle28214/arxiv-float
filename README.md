@@ -1,6 +1,5 @@
-# Arxiv Float
+# Arxiv Float: AI 驱动的 arXiv 论文阅读助手
 
-**AI 驱动的 arXiv 论文阅读助手**  
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 Arxiv Float 是一款面向机器人/人工智能领域研究者的桌面应用，能够实时获取 arXiv 最新论文，利用大语言模型生成中文摘要，并提供 PDF 聊天、代码仓库查询、全局技术路线图等深度功能，帮助您快速把握领域动态。
@@ -27,10 +26,11 @@ Arxiv Float 是一款面向机器人/人工智能领域研究者的桌面应用�
 ### 前置要求
 
 - **Python 3.10+**
-- **[Ollama](https://ollama.com/)** – 本地运行大语言模型，并下载 `llama3.2`：
-  ```bash
-  ollama pull llama3.2
-
+- **[Ollama](https://ollama.com/)** – 本地运行大语言模型，并下载`llama3.2`：
+```bash
+ollama serve
+ollama run llama3.2
+```
 ### 自定义
 
 你可以通过修改`constant.py`来自定义所使用的模型和文章类别：
