@@ -1,0 +1,6 @@
+PyMuPDF
+PyQt6
+arxiv
+ollama
+rank_bm25
+requests

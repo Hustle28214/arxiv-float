@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Arxiv Float
+Comment=AI-powered arXiv paper reader
+Exec=/usr/bin/arxiv-float
+Icon=arxiv-float
+Terminal=false
+Type=Application
+Categories=Science;Education;

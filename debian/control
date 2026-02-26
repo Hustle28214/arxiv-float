@@ -1,0 +1,17 @@
+Source: arxiv-float
+Section: science
+Priority: optional
+Maintainer: Your Full Name <your.name@example.com>
+Build-Depends: debhelper (>= 11), dh-python, python3-all, python3-setuptools
+X-Python3-Version: >= 3.8
+Standards-Version: 4.5.0
+Homepage: https://github.com/yourusername/arxiv-float
+
+Package: arxiv-float
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends},
+ python3-pyqt6, python3-requests, python3-arxiv, python3-fitz, python3-ollama,
+ git
+Description: AI-powered arXiv paper reader for robotics
+ Arxiv Float is a desktop application that fetches recent robotics papers,
+ generates AI summaries, allows chatting with PDFs, and provides code repo integration.

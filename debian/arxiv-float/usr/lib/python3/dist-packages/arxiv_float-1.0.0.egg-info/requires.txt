@@ -1,0 +1,4 @@
+PyQt6
+arxiv
+ollama
+rank_bm25
