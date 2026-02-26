@@ -13,9 +13,5 @@ setup(
         'requests',
         'rank_bm25',
     ],
-    entry_points={
-        'console_scripts': [
-            'arxiv-float = run:main',
-        ],
-    },
+    scripts=['arxiv-float'],  # 将启动脚本安装到 /usr/bin
 )

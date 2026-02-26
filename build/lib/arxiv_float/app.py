@@ -510,3 +510,6 @@ def main():
     window = ArxivFloatWindow()
     window.show()
     return app.exec()
+
+if __name__ == "__main__":
+    main()

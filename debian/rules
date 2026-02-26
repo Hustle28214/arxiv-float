@@ -1,6 +1,25 @@
 #!/usr/bin/make -f
+export DH_VIRTUALENV_INSTALL_ROOT=/usr/share/python3
+export PYBUILD_NAME=arxiv-float
+
 %:
-	dh $@ --with python3 --buildsystem=pybuild
+	dh $@ --with python-virtualenv --buildsystem=pybuild
+
+override_dh_virtualenv:
+	dh_virtualenv --python /usr/bin/python3 \
+	              --preinstall pip \
+	              --preinstall setuptools \
+	              --requirements requirements.txt \
+	              --extra-pip-arg "--no-cache-dir" \
+	              --extra-pip-arg "-i https://pypi.tuna.tsinghua.edu.cn/simple" \
+	              --verbose
+
+override_dh_auto_install:
+	dh_auto_install
+	# 手动复制启动脚本
+	mkdir -p debian/arxiv-float/usr/bin
+	cp debian/arxiv-float-wrapper debian/arxiv-float/usr/bin/arxiv-float
+	chmod 755 debian/arxiv-float/usr/bin/arxiv-float
 
 override_dh_auto_test:
-	@echo "Skipping tests"
+	# 跳过测试

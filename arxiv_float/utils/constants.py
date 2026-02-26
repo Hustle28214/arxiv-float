@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import httpx
 from ollama import Client
 
@@ -8,14 +9,26 @@ for key in ['http_proxy', 'https_proxy', 'all_proxy', 'HTTP_PROXY', 'HTTPS_PROXY
 os.environ['NO_PROXY'] = '127.0.0.1,localhost'
 
 # --- 配置常量 ---
+HOME = str(Path.home())
+
 MODEL_NAME = "llama3.2"
 CATEGORY = "cs.RO"
 WINDOW_WIDTH = 700
 WINDOW_HEIGHT = 900
-CACHE_FILE = os.path.expanduser("/home/gufei/arxiv_float_project/arxiv_float/cache/.arxiv_float_cache.json")
+
+# 缓存目录 ~/.cache/arxiv-float/
+CACHE_DIR = os.path.join(HOME, ".cache", "arxiv-float")
+os.makedirs(CACHE_DIR, exist_ok=True)
+CACHE_FILE = os.path.join(CACHE_DIR, "arxiv_float_cache.json")
 MAX_CACHE_SIZE = 50
-PDF_SAVE_DIR = "/home/gufei/books/paper/robotics"  # 请用户自行修改
-CLONE_BASE_DIR = "/home/gufei/cloneProjects"        # 请用户自行修改
+
+# PDF 保存目录 ~/Documents/arxiv-float-papers/
+PDF_SAVE_DIR = os.path.join(HOME, "Documents", "arxiv-float-papers")
+os.makedirs(PDF_SAVE_DIR, exist_ok=True)
+
+# 克隆项目目录 ~/arxiv-float-clones/
+CLONE_BASE_DIR = os.path.join(HOME, "arxiv-float-clones")
+os.makedirs(CLONE_BASE_DIR, exist_ok=True)
 
 # Ollama 服务地址
 OLLAMA_HOST = "http://127.0.0.1:11434"
@@ -38,13 +51,11 @@ CATEGORY_TAGS = [
     "Hardware",
     "Meta-Learning", "Few-Shot", "Multi-Task", "Self-Supervised Learning",
     "Supervised Learning", "Unsupervised Learning",
-    "Brain-inspired Computing", "Neuromorphic Computing","Mimic Learning","Transfer Learning"
+    "Brain-inspired Computing", "Neuromorphic Computing", "Mimic Learning", "Transfer Learning",
     "Other"
 ]
 
-# 确保目录存在
-os.makedirs(PDF_SAVE_DIR, exist_ok=True)
-os.makedirs(CLONE_BASE_DIR, exist_ok=True)
+# 注意：目录已在上面各路径处创建，不再需要额外的 os.makedirs
 
 def create_ollama_client():
     """创建 Ollama 客户端（禁用代理已在程序启动时处理）"""

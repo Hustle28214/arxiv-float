@@ -1,0 +1,54 @@
+dpkg-buildpackage: info: 源码包 arxiv-float
+dpkg-buildpackage: info: 源码版本 1.0.0
+dpkg-buildpackage: info: source distribution UNRELEASED
+dpkg-buildpackage: info: 源码修改者 Your Full Name <your.name@example.com>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: 主机架构 amd64
+ fakeroot debian/rules clean
+dh clean --with python-virtualenv
+   dh_clean
+ dpkg-source -b .
+dpkg-source: info: using source format '3.0 (native)'
+dpkg-source: info: building arxiv-float in arxiv-float_1.0.0.tar.xz
+dpkg-source: info: building arxiv-float in arxiv-float_1.0.0.dsc
+ debian/rules build
+make: “build”已是最新。
+ fakeroot debian/rules binary
+dh binary --with python-virtualenv
+   dh_update_autotools_config
+   dh_autoreconf
+   dh_auto_configure
+dh_auto_configure: warning: Please use the third-party "pybuild" build system instead of python-distutils
+dh_auto_configure: warning: This feature will be removed in compat 12.
+   create-stamp debian/debhelper-build-stamp
+   dh_testroot
+   dh_prep
+   dh_install
+   dh_installdocs
+   dh_installchangelogs
+   debian/rules override_dh_virtualenv
+make[1]: 进入目录“/home/gufei/arxiv_float_project”
+dh_virtualenv --python /usr/bin/python3 \
+              --preinstall pip \
+              --preinstall setuptools \
+              --package . \
+              --extra-pip-arg "--no-cache-dir"
+/usr/bin/dh_virtualenv:60: DeprecationWarning: inspect.getargspec() is deprecated since Python 3.0, use inspect.signature() or inspect.getfullargspec()
+  arguments = inspect.getargspec(DebHelper.__init__).args
+make[1]: 离开目录“/home/gufei/arxiv_float_project”
+   dh_perl
+   dh_link
+   dh_strip_nondeterminism
+   dh_compress
+   dh_fixperms
+   dh_missing
+   dh_installdeb
+   dh_gencontrol
+   dh_md5sums
+   dh_builddeb
+dpkg-deb: 正在 '../arxiv-float_1.0.0_all.deb' 中构建软件包 'arxiv-float'。
+ dpkg-genbuildinfo -O../arxiv-float_1.0.0_amd64.buildinfo
+ dpkg-genchanges -O../arxiv-float_1.0.0_amd64.changes
+dpkg-genchanges: info: 上传数据中包含完整的原始代码
+ dpkg-source --after-build .
+dpkg-buildpackage: info: full upload; Debian-native package (full source is included)

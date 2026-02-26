@@ -1,0 +1,7 @@
+#!/bin/bash
+# 尝试导入缺失的模块，如果失败则提示安装
+python3 -c "import arxiv, ollama, rank_bm25" 2>/dev/null || {
+    echo "正在安装缺失的 Python 模块..."
+    pip3 install --user arxiv ollama rank_bm25
+}
+exec python3 -m arxiv_float.app "$@"
