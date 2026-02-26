@@ -25,12 +25,66 @@ Arxiv Float 是一款面向机器人/人工智能领域研究者的桌面应用�
 
 ### 前置要求
 
+- **Git**
 - **Python 3.10+**
 - **[Ollama](https://ollama.com/)** – 本地运行大语言模型，并下载`llama3.2`：
 ```bash
 ollama serve
 ollama run llama3.2
 ```
+
+然后终端输入:
+
+```bash
+arxiv-float
+```
+
+即可运行。
+
+### 从源码运行
+
+注：由于上传限制，源码不包含执行文件，如果想省事请移步Release下载对应软件包。
+
+克隆仓库：
+```bash
+git clone https://github.com/yourusername/arxiv-float.git
+cd arxiv-float
+```
+安装 Python 依赖：
+```bash
+pip install -r requirements.txt
+```
+推荐在虚拟环境中安装。
+
+运行程序：
+```bash
+python run.py
+```
+
+### 使用预构建的 Debian 包（仅限 amd64）
+
+如果您使用的是 Ubuntu/Debian amd64 系统，可以从 Releases 下载 .deb 包，然后安装：
+```bash
+
+sudo dpkg -i arxiv-float_*.deb
+# 如果提示依赖缺失，运行：
+sudo apt --fix-broken install
+```
+安装后，可以从应用程序菜单启动 Arxiv Float，或直接在终端执行 `arxiv-float`。
+
+## ⚙️ 配置
+
+首次运行后，程序会在您的用户目录下自动创建以下文件夹：
+
+`~/.cache/arxiv-float/` – 缓存文件（论文摘要、标签等）
+
+`~/Documents/arxiv-float-papers/` – 下载的 PDF 存放位置
+
+`~/arxiv-float-clones/` – Git Clone 的代码仓库
+
+您可以通过修改 arxiv_float/utils/constants.py 中的相关常量来调整这些路径。如需更改使用的模型（如 llama3.2），也在此文件中修改 MODEL_NAME。
+
+
 ### 自定义
 
 你可以通过修改`constant.py`来自定义所使用的模型和文章类别：
@@ -87,3 +141,42 @@ CLONE_BASE_DIR = os.path.join(HOME, "arxiv-float-clones")
 os.makedirs(CLONE_BASE_DIR, exist_ok=True)
 
 ```
+
+## 📖 使用指南
+
+启动程序后，主窗口会立即刷新最新论文（默认 30 篇）。
+
+点击论文卡片上的 🔍 放大镜 打开详细窗口。
+
+在详细窗口中：
+
+1. 点击 📥 PDF下载 下载论文。
+
+2. 下载后可使用 📖 全文解释 或 💬 Chat with PDF。
+
+3. 点击 🔗 查看代码 查询代码仓库，支持“打开网页”或“Git Clone”。
+
+主窗口顶部的 🔥 热门引用 可查看近 3 年/1 年/6 个月等时段的高引用论文。
+
+📈 全局路线图 基于已缓存论文生成指定技术领域的发展脉络（需要多篇同类论文）。
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！如果您想添加新功能或改进现有功能，请先开 Issue 讨论。
+
+## 📄 许可证
+
+本项目采用 GNU General Public License v3.0 开源许可证。详情请参阅 LICENSE 文件。
+
+## 🙏 致谢
+
+- [arXiv](https://arxiv.org/) – 学术论文预印本平台
+- [Ollama](https://ollama.com/) – 本地大模型运行框架
+- [Papers with Code](https://paperswithcode.com/) – 提供代码仓库 API
+- [PyMuPDF](https://pymupdf.readthedocs.io/) – PDF 处理库
+- [PyQt6](https://riverbankcomputing.com/software/pyqt/) – GUI 框架
+
+## Shot
+
+![image](Shot_1.0.0.png)
+
