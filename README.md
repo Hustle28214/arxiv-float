@@ -4,6 +4,10 @@
 
 Arxiv Float 是一款面向机器人/人工智能领域研究者的桌面应用，能够实时获取 arXiv 最新论文，利用大语言模型生成中文摘要，并提供 PDF 聊天、代码仓库查询、全局技术路线图等深度功能，帮助您快速把握领域动态。
 
+## Shot
+
+![image](Shot_1.0.0.png)
+
 ## ✨ 功能特性
 
 - 📥 **实时论文流** – 自动抓取 `cs.RO` 分类最新论文，支持分类标签筛选。（您可以在源代码修改需要的分类，默认支持Robotics。）
@@ -176,7 +180,5 @@ os.makedirs(CLONE_BASE_DIR, exist_ok=True)
 - [PyMuPDF](https://pymupdf.readthedocs.io/) – PDF 处理库
 - [PyQt6](https://riverbankcomputing.com/software/pyqt/) – GUI 框架
 
-## Shot
 
-![image](Shot_1.0.0.png)
 
